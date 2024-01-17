@@ -5,11 +5,18 @@ public static class GameBusiness {
     public static void Enter(GameContext ctx) {
         Debug.Log("EnterGame");
 
+        // 0. Player
+        ctx.playerEntity.hp = 5;
+        ctx.playerEntity.hpMax = 5;
+
         // 1. 生成我方基地 Entity Flag
         FlagDomain.Spawn(ctx, 0, new Vector2(0, -5));
 
         // 2. 生成刷怪点 Entity Tower
         TowerDomain.Spawn(ctx, 0, new Vector2(0, 5));
+
+        // 3. 打开 UI
+        UIApp.P_HearInfo_Open(ctx.uiContext, ctx.playerEntity.hp);
 
     }
 
@@ -37,13 +44,14 @@ public static class GameBusiness {
         for (int i = 0; i < roleLen; i += 1) {
             RoleEntity role = roles[i];
             RoleDomain.MoveByPath(ctx, role, fixdt);
+            RoleDomain.OverlapFlag(ctx, role);
         }
 
     }
 
     // 每帧一次
     public static void LateTick(GameContext ctx, float dt) {
-
+        UIApp.P_HearInfo_Update(ctx.uiContext, ctx.playerEntity.hp);
     }
 
     public static void Exit(GameContext ctx) {

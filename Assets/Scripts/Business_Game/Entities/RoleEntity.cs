@@ -11,6 +11,10 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor() { }
 
+    public void TearDown() {
+        GameObject.Destroy(gameObject);
+    }
+
     public void SetPos(Vector2 pos) {
         transform.position = pos;
     }

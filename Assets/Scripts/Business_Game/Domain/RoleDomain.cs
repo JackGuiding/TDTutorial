@@ -15,8 +15,13 @@ public static class RoleDomain {
         return entity;
     }
 
+    public static void Unspawn(GameContext ctx, RoleEntity role) {
+        ctx.roleRepository.Remove(role);
+        role.TearDown();
+    }
+
     public static void MoveByPath(GameContext ctx, RoleEntity role, float fixdt) {
-        
+
         // 无路径
         if (role.path == null) {
             return;
@@ -40,6 +45,23 @@ public static class RoleDomain {
             role.Move(dir, fixdt);
         }
 
+    }
+
+    public static void OverlapFlag(GameContext ctx, RoleEntity role) {
+        // 找到所有Flag, 并且与Role碰撞
+        FlagEntity target = ctx.flagRepository.Find((FlagEntity flag) => {
+            float disSqr = Vector2.SqrMagnitude((Vector2)role.transform.position - (Vector2)flag.transform.position);
+            if (disSqr < 0.1f) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        if (target != null) {
+            Unspawn(ctx, role);
+            PlayerDomain.Hurt(ctx, ctx.playerEntity, 1);
+        }
     }
 
 }

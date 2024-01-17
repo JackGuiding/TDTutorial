@@ -17,7 +17,7 @@ public class MainContext {
 
         this.assetsContext = assetsContext;
 
-        gameContext.Inject(assetsContext);
+        gameContext.Inject(uiContext, assetsContext);
         uiContext.Inject(canvas, assetsContext);
     }
 

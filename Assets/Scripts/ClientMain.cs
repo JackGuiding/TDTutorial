@@ -8,6 +8,9 @@ public class ClientMain : MonoBehaviour {
 
     void Start() {
 
+        // SetFPS
+        Application.targetFrameRate = 120;
+
         // 实例化(创建)
         mainContext = new MainContext();
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>(); // GetComponent 与拖拽绑定相似, GetComponents
@@ -57,6 +60,9 @@ public class ClientMain : MonoBehaviour {
                 restDT -= FIXED_INTERVAL;
             }
         }
+
+        // LateTick
+        GameBusiness.LateTick(mainContext.gameContext, dt);
 
     }
 

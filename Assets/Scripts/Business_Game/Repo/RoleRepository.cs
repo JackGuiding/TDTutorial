@@ -15,7 +15,10 @@ public class RoleRepository {
 
     public void Add(RoleEntity entity) {
         all.Add(entity.id, entity);
-        UnityEngine.Debug.Log("RoleRepository.Add: " + entity.id);
+    }
+
+    public void Remove(RoleEntity entity) {
+        all.Remove(entity.id);
     }
 
     public int TakeAll(out RoleEntity[] array) {

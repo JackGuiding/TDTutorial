@@ -3,6 +3,7 @@ using UnityEngine;
 public class UIContext {
 
     public Panel_Login panel_login;
+    public Panel_HeartInfo panel_heartInfo;
 
     public Canvas canvas;
 

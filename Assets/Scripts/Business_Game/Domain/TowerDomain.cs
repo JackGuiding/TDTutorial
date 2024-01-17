@@ -30,7 +30,6 @@ public static class TowerDomain {
         tower.intervalTimer -= fixdt;
         if (tower.intervalTimer <= 0) {
             tower.intervalTimer = tower.interval;
-            Debug.Log("生成怪物");
             RoleEntity role = RoleDomain.Spawn(ctx, 0, tower.transform.position);
             role.path = tower.path;
         }

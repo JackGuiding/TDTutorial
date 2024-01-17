@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Panel_Login : MonoBehaviour {
 
-    [SerializeField] Button startBtn; // class null
+    [SerializeField] public Button startBtn; // class null
 
     public Action OnStartClickHandle;
 
