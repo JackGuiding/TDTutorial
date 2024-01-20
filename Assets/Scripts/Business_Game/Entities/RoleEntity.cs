@@ -9,7 +9,13 @@ public class RoleEntity : MonoBehaviour {
     public Vector2[] path;
     public int pathIndex; // 0
 
+    public SpriteRenderer sr; // 把图片渲染出来用的渲染器
+
     public void Ctor() { }
+
+    public void Init(Sprite spr) {
+        sr.sprite = spr;
+    }
 
     public void TearDown() {
         GameObject.Destroy(gameObject);

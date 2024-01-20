@@ -1,13 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssetsContext : MonoBehaviour {
+// 绑定
+public class AssetsContext {
 
-    public Panel_Login panel_login;
-    public Panel_HeartInfo panel_heartInfo;
+    public Dictionary<string, GameObject> panels;
+    public Dictionary<string, GameObject> entities;
 
-    public FlagEntity flagEntity;
-    public TowerEntity towerEntity;
-    public RoleEntity roleEntity;
+    public AssetsContext() {
+        entities = new Dictionary<string, GameObject>();
+        panels = new Dictionary<string, GameObject>();
+    }
+
+    public bool Panel_TryGetPrefab(string name, out GameObject prefab) {
+        // null // 那哦  不是  努哦
+        // null.xxx 就会 NullReferenceException
+        return panels.TryGetValue(name, out prefab);
+    }
+
+    public bool Entity_TryGetPrefab(string name, out GameObject prefab) {
+        return entities.TryGetValue(name, out prefab);
+    }
 
 }

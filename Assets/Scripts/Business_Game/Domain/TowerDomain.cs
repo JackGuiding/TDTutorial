@@ -3,8 +3,8 @@ using UnityEngine;
 public static class TowerDomain {
 
     public static TowerEntity Spawn(GameContext ctx, int typeID, Vector2 pos) {
-        TowerEntity prefab = ctx.assetsContext.towerEntity;
-        TowerEntity entity = GameObject.Instantiate(prefab);
+        ctx.assetsContext.Entity_TryGetPrefab("Entity_Tower", out GameObject prefab);
+        TowerEntity entity = GameObject.Instantiate(prefab).GetComponent<TowerEntity>();
         entity.Ctor();
         entity.SetPos(pos);
         entity.id = ctx.towerID++;
@@ -30,7 +30,7 @@ public static class TowerDomain {
         tower.intervalTimer -= fixdt;
         if (tower.intervalTimer <= 0) {
             tower.intervalTimer = tower.interval;
-            RoleEntity role = RoleDomain.Spawn(ctx, 0, tower.transform.position);
+            RoleEntity role = RoleDomain.Spawn(ctx, tower.roleTypeID, tower.transform.position);
             role.path = tower.path;
         }
 

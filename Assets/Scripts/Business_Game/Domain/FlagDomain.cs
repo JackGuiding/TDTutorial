@@ -4,8 +4,8 @@ public static class FlagDomain {
 
     public static FlagEntity Spawn(GameContext ctx, int typeID, Vector2 pos) {
         // 生成
-        FlagEntity prefab = ctx.assetsContext.flagEntity;
-        FlagEntity entity = GameObject.Instantiate(prefab);
+        ctx.assetsContext.Entity_TryGetPrefab("Entity_Flag", out GameObject prefab);
+        FlagEntity entity = GameObject.Instantiate(prefab).GetComponent<FlagEntity>();
         entity.Ctor();
         entity.SetPos(pos);
         entity.id = ctx.flagID++;

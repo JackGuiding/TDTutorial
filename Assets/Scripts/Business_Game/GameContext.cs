@@ -7,6 +7,7 @@ public class GameContext {
 
     public UIContext uiContext;
     public AssetsContext assetsContext;
+    public TemplateContext templateContext;
 
     public int flagID;
     public int towerID;
@@ -23,9 +24,10 @@ public class GameContext {
         roleID = 0;
     }
 
-    public void Inject(UIContext uiContext, AssetsContext assetsContext) {
+    public void Inject(UIContext uiContext, AssetsContext assetsContext, TemplateContext templateContext) {
         this.uiContext = uiContext;
         this.assetsContext = assetsContext;
+        this.templateContext = templateContext;
     }
 
 }

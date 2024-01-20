@@ -14,10 +14,13 @@ public class ClientMain : MonoBehaviour {
         // 实例化(创建)
         mainContext = new MainContext();
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>(); // GetComponent 与拖拽绑定相似, GetComponents
-        AssetsContext assetsContext = gameObject.GetComponentInChildren<AssetsContext>();
 
         // 依赖注入 Inject注入
-        mainContext.Inject(canvas, assetsContext);
+        mainContext.Inject(canvas);
+
+        // Init
+        AssetsInfra.Load(mainContext.assetsContext);
+        TemplateInfra.Load(mainContext.templateContext);
 
         // 进入 Login
         UIApp.P_Login_Open(mainContext.uiContext, () => {

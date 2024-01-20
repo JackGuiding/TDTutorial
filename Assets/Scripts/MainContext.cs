@@ -7,17 +7,17 @@ public class MainContext {
 
     public UIContext uiContext;
     public AssetsContext assetsContext;
+    public TemplateContext templateContext;
 
     public MainContext() {
         gameContext = new GameContext();
         uiContext = new UIContext();
+        assetsContext = new AssetsContext();
+        templateContext = new TemplateContext();
     }
 
-    public void Inject(Canvas canvas, AssetsContext assetsContext) {
-
-        this.assetsContext = assetsContext;
-
-        gameContext.Inject(uiContext, assetsContext);
+    public void Inject(Canvas canvas) {
+        gameContext.Inject(uiContext, assetsContext, templateContext);
         uiContext.Inject(canvas, assetsContext);
     }
 

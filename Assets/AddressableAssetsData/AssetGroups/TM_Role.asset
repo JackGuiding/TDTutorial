@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TM_Role
+  m_EditorClassIdentifier: 
+  m_GroupName: TM_Role
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9e2ce2b7024dcba47a5e5327591cc438
+  m_SerializeEntries:
+  - m_GUID: 7dda4180eafd1474988c864a096dd089
+    m_Address: TM_Role_100
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Role
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc35cad3f0195c149981cf6eeaf2e795
+    m_Address: TM_Role_110
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Role
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1631455d53ecf7b4fbd0cc05850c173a
+    m_Address: TM_Role_120
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Role
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5e8bab46a147cf4b96461c75b0936c9
+    m_Address: TM_Role_130
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Role
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 355e07ab0d626b74391769322af3de57, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 61890799988847a4ca73be01ba3c93f8, type: 2}
+    - {fileID: 11400000, guid: b88b000109d9a07478ff087ac6cb232a, type: 2}

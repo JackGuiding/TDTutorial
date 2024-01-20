@@ -14,7 +14,7 @@ public class TowerEntity : MonoBehaviour {
     public float maintainTimer;
     public float interval;
     public float intervalTimer;
-    // public int roleTypeID;
+    public int roleTypeID;
 
     public Vector2[] path;
 
@@ -29,6 +29,7 @@ public class TowerEntity : MonoBehaviour {
         maintainTimer = 3.01f;
         interval = 1;
         intervalTimer = 1;
+        roleTypeID = 100;
 
         // 0, 5
         path = new Vector2[] {

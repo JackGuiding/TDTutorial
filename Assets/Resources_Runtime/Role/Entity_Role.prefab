@@ -132,3 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  moveSpeed: 0
+  path: []
+  pathIndex: 0
+  sr: {fileID: 3900358625260633047}

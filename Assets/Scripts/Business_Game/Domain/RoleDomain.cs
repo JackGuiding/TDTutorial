@@ -3,13 +3,23 @@ using UnityEngine;
 public static class RoleDomain {
 
     public static RoleEntity Spawn(GameContext ctx, int typeID, Vector2 pos) {
-        RoleEntity prefab = ctx.assetsContext.roleEntity;
-        RoleEntity entity = GameObject.Instantiate(prefab);
+
+        // 怪物配置: Template Model (RoleTM)
+        bool has = ctx.templateContext.roles.TryGetValue(typeID, out RoleTM tm);
+        if (!has) {
+            Debug.LogError("找不到RoleTM: " + typeID);
+        }
+
+        ctx.assetsContext.Entity_TryGetPrefab("Entity_Role", out GameObject prefab);
+        RoleEntity entity = GameObject.Instantiate(prefab).GetComponent<RoleEntity>();
         entity.Ctor();
         entity.SetPos(pos);
         entity.id = ctx.roleID++;
 
-        entity.moveSpeed = 4.5f;
+        entity.moveSpeed = tm.moveSpeed;
+        entity.Init(tm.spr);
+
+        Debug.Log("生成Role: " + typeID);
 
         ctx.roleRepository.Add(entity);
         return entity;
