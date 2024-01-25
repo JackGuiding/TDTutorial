@@ -74,6 +74,7 @@ public static class UIApp {
     public static void P_BuildManifest_AddOption(UIContext ctx, int clickedTowerEntityID, int clickedTowerTypeID) {
         Panel_BuildManifest panel = ctx.panel_buildManifest;
         if (panel != null) {
+            // Template
             panel.AddOption(clickedTowerEntityID, clickedTowerTypeID, 10, null);
         }
     }

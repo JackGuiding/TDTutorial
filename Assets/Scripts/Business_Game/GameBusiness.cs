@@ -13,7 +13,7 @@ public static class GameBusiness {
         FlagDomain.Spawn(ctx, 0, new Vector2(0, -5));
 
         // 2. 生成刷怪点 Entity Tower
-        TowerDomain.Spawn(ctx, 0, new Vector2(0, 5));
+        TowerDomain.Spawn(ctx, 1000, new Vector2(0, 5));
 
         // 3. 打开 UI
         UIApp.P_HearInfo_Open(ctx.uiContext, ctx.playerEntity.hp);

@@ -8,6 +8,8 @@ public class TowerEntity : MonoBehaviour {
     public int id;
     public int typeID;
 
+    public int price;
+
     // ==== 形状 ====
     // 矩形
     public Vector2 shapeSize;
@@ -30,7 +32,7 @@ public class TowerEntity : MonoBehaviour {
     // 生成假数据
     public void InitFakeData() {
 
-        typeID = 100;
+        typeID = 100; 
 
         shapeSize = new Vector2(1, 1);
 

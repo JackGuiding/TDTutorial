@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a344a2d64ebd2340b9e0f23f7eb4739, type: 3}
+  m_Name: TM_Tower_300
+  m_EditorClassIdentifier: 
+  typeID: 300
+  price: 30
+  shapeSize: {x: 1, y: 1}
+  isSpawner: 0
+  cd: 0
+  cdMax: 0
+  maintain: 0
+  maintainTimer: 0
+  interval: 0
+  intervalTimer: 0
+  roleTypeID: 0
+  path: []
+  allowBuildTowerTypeIDs: 

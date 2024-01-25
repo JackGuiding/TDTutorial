@@ -4,13 +4,28 @@ public static class TowerDomain {
 
     public static TowerEntity Spawn(GameContext ctx, int typeID, Vector2 pos) {
         ctx.assetsContext.Entity_TryGetPrefab("Entity_Tower", out GameObject prefab);
+        bool has = ctx.templateContext.towers.TryGetValue(typeID, out TowerTM tm);
+        if (!has) {
+            Debug.LogError($"TowerDomain.Spawn: no such tower typeID: {typeID}");
+            return null;
+        }
         TowerEntity entity = GameObject.Instantiate(prefab).GetComponent<TowerEntity>();
         entity.Ctor();
         entity.SetPos(pos);
         entity.id = ctx.towerID++;
+        entity.typeID = tm.typeID;
+        entity.price = tm.price;
+        entity.shapeSize = tm.shapeSize;
 
-        // 生成假数据 测试用 TM
-        entity.InitFakeData();
+        entity.isSpawner = tm.isSpawner;
+        entity.cd = tm.cd;
+        entity.cdMax = tm.cd;
+        entity.maintain = tm.maintain;
+        entity.maintainTimer = tm.maintain;
+        entity.interval = tm.interval;
+        entity.intervalTimer = tm.interval;
+        entity.roleTypeID = tm.roleTypeID;
+        entity.path = tm.path;
 
         ctx.towerRepository.Add(entity);
         return entity;
