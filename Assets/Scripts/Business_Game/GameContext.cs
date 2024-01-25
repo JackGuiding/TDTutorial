@@ -1,6 +1,9 @@
+using UnityEngine;
+
 public class GameContext {
 
     public PlayerEntity playerEntity;
+    public InputEntity inputEntity;
     public FlagRepository flagRepository;
     public TowerRepository towerRepository;
     public RoleRepository roleRepository;
@@ -9,12 +12,15 @@ public class GameContext {
     public AssetsContext assetsContext;
     public TemplateContext templateContext;
 
+    public Camera mainCamera;
+
     public int flagID;
     public int towerID;
     public int roleID;
 
     public GameContext() {
         playerEntity = new PlayerEntity();
+        inputEntity = new InputEntity();
         flagRepository = new FlagRepository();
         towerRepository = new TowerRepository();
         roleRepository = new RoleRepository();
@@ -24,7 +30,8 @@ public class GameContext {
         roleID = 0;
     }
 
-    public void Inject(UIContext uiContext, AssetsContext assetsContext, TemplateContext templateContext) {
+    public void Inject(Camera mainCamera, UIContext uiContext, AssetsContext assetsContext, TemplateContext templateContext) {
+        this.mainCamera = mainCamera;
         this.uiContext = uiContext;
         this.assetsContext = assetsContext;
         this.templateContext = templateContext;

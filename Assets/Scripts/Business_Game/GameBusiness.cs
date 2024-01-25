@@ -23,6 +23,24 @@ public static class GameBusiness {
     // 每帧一次
     public static void PreTick(GameContext ctx, float dt) {
 
+        InputEntity input = ctx.inputEntity;
+
+        // 鼠标屏幕空间
+        input.mouseScreenPos = Input.mousePosition;
+
+        // 鼠标世界空间
+        Camera mainCamera = ctx.mainCamera;
+        input.mouseWorldPos = mainCamera.ScreenToWorldPoint(input.mouseScreenPos);
+        // mainCamera.WorldToScreenPoint(Vector3.zero);
+
+        // 0 左键点击, 1 右键点击, 2 中键点击
+        if (Input.GetMouseButtonDown(0)) {
+            input.isMouseLeftDown = true;
+        }
+
+        // 处理用户输入
+        UserInterfaceDomain.PreTick(ctx, dt);
+
         // for Flag
 
         // for Role

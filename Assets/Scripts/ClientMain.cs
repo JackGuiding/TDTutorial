@@ -14,9 +14,10 @@ public class ClientMain : MonoBehaviour {
         // 实例化(创建)
         mainContext = new MainContext();
         Canvas canvas = gameObject.GetComponentInChildren<Canvas>(); // GetComponent 与拖拽绑定相似, GetComponents
+        Camera mainCamera = gameObject.GetComponentInChildren<Camera>();
 
         // 依赖注入 Inject注入
-        mainContext.Inject(canvas);
+        mainContext.Inject(mainCamera, canvas);
 
         // Init
         AssetsInfra.Load(mainContext.assetsContext);
@@ -48,7 +49,7 @@ public class ClientMain : MonoBehaviour {
 
         float dt = Time.deltaTime; // 0.01 0.0001
 
-        // PreTick
+        // PreTick: Input
         // 0.01 + 0.02 = 0.0300000004
         GameBusiness.PreTick(mainContext.gameContext, dt);
 
