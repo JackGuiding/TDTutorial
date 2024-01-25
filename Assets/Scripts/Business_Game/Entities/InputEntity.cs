@@ -9,4 +9,11 @@ public class InputEntity {
 
     public InputEntity() { }
 
+    public void Reset() {
+        // moveDir = Vector2.zero;
+        mouseScreenPos = Vector2.zero;
+        mouseWorldPos = Vector2.zero;
+        isMouseLeftDown = false;
+    }
+
 }

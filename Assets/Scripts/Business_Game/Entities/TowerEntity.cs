@@ -6,6 +6,7 @@ using UnityEngine;
 public class TowerEntity : MonoBehaviour {
 
     public int id;
+    public int typeID;
 
     // ==== 形状 ====
     // 矩形
@@ -28,6 +29,8 @@ public class TowerEntity : MonoBehaviour {
 
     // 生成假数据
     public void InitFakeData() {
+
+        typeID = 100;
 
         shapeSize = new Vector2(1, 1);
 

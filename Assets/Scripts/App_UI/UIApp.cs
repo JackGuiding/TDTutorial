@@ -9,7 +9,7 @@ public static class UIApp {
         Panel_Login panel = ctx.panel_login;
         if (panel == null) {
             ctx.assetsContext.Panel_TryGetPrefab("Panel_Login", out GameObject prefab);
-            panel = GameObject.Instantiate(prefab, ctx.canvas.transform).GetComponent<Panel_Login>();
+            panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_Login>();
             panel.Ctor();
             ctx.panel_login = panel;
 
@@ -31,7 +31,7 @@ public static class UIApp {
         Panel_HeartInfo panel = ctx.panel_heartInfo;
         if (panel == null) {
             ctx.assetsContext.Panel_TryGetPrefab("Panel_HeartInfo", out GameObject prefab);
-            panel = GameObject.Instantiate(prefab, ctx.canvas.transform).GetComponent<Panel_HeartInfo>();
+            panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_HeartInfo>();
             panel.Ctor();
             ctx.panel_heartInfo = panel;
         }
@@ -50,6 +50,33 @@ public static class UIApp {
         Panel_HeartInfo panel = ctx.panel_heartInfo;
         if (panel != null) {
             panel.Close();
+        }
+    }
+
+    // P BuildManifest
+    public static void P_BuildManifest_Open(UIContext ctx, Vector3 worldPos) {
+        Panel_BuildManifest panel = ctx.panel_buildManifest;
+        if (panel == null) {
+            ctx.assetsContext.Panel_TryGetPrefab("Panel_BuildManifest", out GameObject prefab);
+            panel = GameObject.Instantiate(prefab, ctx.worldCanvas.transform).GetComponent<Panel_BuildManifest>();
+            panel.Ctor();
+            ctx.panel_buildManifest = panel;
+        }
+        panel.Init(worldPos);
+    }
+
+    public static void P_BuildManifest_AddOption(UIContext ctx, int clickedTowerEntityID, int clickedTowerTypeID) {
+        Panel_BuildManifest panel = ctx.panel_buildManifest;
+        if (panel != null) {
+            panel.AddOption(clickedTowerEntityID, clickedTowerTypeID, 10, null);
+        }
+    }
+
+    public static void P_BuildManifest_Close(UIContext ctx) {
+        Panel_BuildManifest panel = ctx.panel_buildManifest;
+        if (panel != null) {
+            panel.TearDown();
+            ctx.panel_buildManifest = null;
         }
     }
 

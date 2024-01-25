@@ -70,6 +70,8 @@ public static class GameBusiness {
     // 每帧一次
     public static void LateTick(GameContext ctx, float dt) {
         UIApp.P_HearInfo_Update(ctx.uiContext, ctx.playerEntity.hp);
+
+        ctx.inputEntity.Reset();
     }
 
     public static void Exit(GameContext ctx) {

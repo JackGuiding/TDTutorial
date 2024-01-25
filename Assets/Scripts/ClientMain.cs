@@ -13,11 +13,15 @@ public class ClientMain : MonoBehaviour {
 
         // 实例化(创建)
         mainContext = new MainContext();
-        Canvas canvas = gameObject.GetComponentInChildren<Canvas>(); // GetComponent 与拖拽绑定相似, GetComponents
+        Canvas screenCanvas = gameObject.transform.Find("ScreenCanvas").GetComponent<Canvas>(); // GetComponent 与拖拽绑定相似, GetComponents
+        Canvas worldCanvas = gameObject.transform.Find("WorldCanvas").GetComponent<Canvas>();
         Camera mainCamera = gameObject.GetComponentInChildren<Camera>();
+        // 确保不为空
+        Debug.Assert(screenCanvas != null);
+        Debug.Assert(worldCanvas != null);
 
         // 依赖注入 Inject注入
-        mainContext.Inject(mainCamera, canvas);
+        mainContext.Inject(mainCamera, screenCanvas, worldCanvas);
 
         // Init
         AssetsInfra.Load(mainContext.assetsContext);

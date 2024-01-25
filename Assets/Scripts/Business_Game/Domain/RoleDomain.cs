@@ -19,8 +19,6 @@ public static class RoleDomain {
         entity.moveSpeed = tm.moveSpeed;
         entity.Init(tm.spr);
 
-        Debug.Log("生成Role: " + typeID);
-
         ctx.roleRepository.Add(entity);
         return entity;
     }

@@ -6,7 +6,6 @@ public static class PlayerDomain {
         player.hp -= hurt;
         if (player.hp <= 0) {
             player.hp = 0;
-            Debug.Log("Game Over");
         }
     }
 

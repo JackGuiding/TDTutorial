@@ -16,9 +16,9 @@ public class MainContext {
         templateContext = new TemplateContext();
     }
 
-    public void Inject(Camera mainCamera, Canvas canvas) {
+    public void Inject(Camera mainCamera, Canvas screenCanvas, Canvas worldCanvas) {
         gameContext.Inject(mainCamera, uiContext, assetsContext, templateContext);
-        uiContext.Inject(canvas, assetsContext);
+        uiContext.Inject(screenCanvas, worldCanvas, assetsContext);
     }
 
 }
