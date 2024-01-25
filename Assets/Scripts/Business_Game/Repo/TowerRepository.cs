@@ -18,6 +18,14 @@ public class TowerRepository {
         UnityEngine.Debug.Log("TowerRepository.Add: " + entity.id);
     }
 
+    public bool TryGet(int entityID, out TowerEntity entity) {
+        return all.TryGetValue(entityID, out entity);
+    }
+
+    public void Remove(TowerEntity tower) {
+        all.Remove(tower.id);
+    }
+
     public int TakeAll(out TowerEntity[] array) {
         all.Values.CopyTo(tempArray, 0);
         array = tempArray;

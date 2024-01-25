@@ -18,11 +18,9 @@ MonoBehaviour:
   shapeSize: {x: 1, y: 1}
   isSpawner: 0
   cd: 0
-  cdMax: 0
   maintain: 0
-  maintainTimer: 0
   interval: 0
-  intervalTimer: 0
   roleTypeID: 0
   path: []
   allowBuildTowerTypeIDs: c80000002c010000
+  sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}

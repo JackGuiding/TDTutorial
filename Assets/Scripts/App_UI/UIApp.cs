@@ -75,7 +75,8 @@ public static class UIApp {
         Panel_BuildManifest panel = ctx.panel_buildManifest;
         if (panel != null) {
             // Template
-            panel.AddOption(clickedTowerEntityID, clickedTowerTypeID, 10, null);
+            bool has = ctx.templateContext.towers.TryGetValue(clickedTowerTypeID, out TowerTM tm);
+            panel.AddOption(clickedTowerEntityID, clickedTowerTypeID, tm.price, tm.sprite);
         }
     }
 

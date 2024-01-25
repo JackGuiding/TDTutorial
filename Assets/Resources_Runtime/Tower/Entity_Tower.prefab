@@ -46,7 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  typeID: 0
+  price: 0
+  shapeSize: {x: 0, y: 0}
   isSpawner: 0
+  cd: 0
+  cdMax: 0
+  maintain: 0
+  maintainTimer: 0
+  interval: 0
+  intervalTimer: 0
+  roleTypeID: 0
+  path: []
+  sr: {fileID: 2782915537358174557}
 --- !u!1 &8512246401669388664
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +70,7 @@ GameObject:
   - component: {fileID: 6112660380635224055}
   - component: {fileID: 2782915537358174557}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: SR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,8 +27,15 @@ public static class TowerDomain {
         entity.roleTypeID = tm.roleTypeID;
         entity.path = tm.path;
 
+        entity.SetSprite(tm.sprite);
+
         ctx.towerRepository.Add(entity);
         return entity;
+    }
+
+    public static void Unspawn(GameContext ctx, TowerEntity tower) {
+        tower.TearDown();
+        ctx.towerRepository.Remove(tower);
     }
 
     public static void TrySpawnRoles(GameContext ctx, TowerEntity tower, float fixdt) {

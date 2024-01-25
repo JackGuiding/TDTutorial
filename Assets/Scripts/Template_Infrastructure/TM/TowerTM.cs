@@ -9,7 +9,6 @@ public class TowerTM : ScriptableObject {
     public string typeName;
 
     public int price;
-
     public Vector2 shapeSize;
 
     [Header("Spawner")]
@@ -23,5 +22,8 @@ public class TowerTM : ScriptableObject {
     // 点击该类型塔时, 可建造的其他塔
     [Header("Build Manifest")]
     public int[] allowBuildTowerTypeIDs;
+
+    [Header("Render")]
+    public Sprite sprite;
 
 }

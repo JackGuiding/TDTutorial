@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: TM_Tower_300
   m_EditorClassIdentifier: 
   typeID: 300
+  typeName: "\u51B0"
   price: 30
   shapeSize: {x: 1, y: 1}
   isSpawner: 0
   cd: 0
-  cdMax: 0
   maintain: 0
-  maintainTimer: 0
   interval: 0
-  intervalTimer: 0
   roleTypeID: 0
   path: []
   allowBuildTowerTypeIDs: 
+  sprite: {fileID: 21300000, guid: df855ca354e70a54286f7b9894606a14, type: 3}

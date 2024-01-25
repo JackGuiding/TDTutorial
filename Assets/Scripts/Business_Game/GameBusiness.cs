@@ -15,6 +15,9 @@ public static class GameBusiness {
         // 2. 生成刷怪点 Entity Tower
         TowerDomain.Spawn(ctx, 1000, new Vector2(0, 5));
 
+        // 生成空地
+        TowerDomain.Spawn(ctx, 100, new Vector2(-1, 0));
+
         // 3. 打开 UI
         UIApp.P_HearInfo_Open(ctx.uiContext, ctx.playerEntity.hp);
 
@@ -82,7 +85,22 @@ public static class GameBusiness {
     public static void BuildManifest_OnBuild(GameContext ctx, int clickedTowerEntityID, int clickedTowerTypeID) {
         // clickedTowerEntityID 表示: 基于谁, 造在哪里
         // clickedTowerTypeID 表示造什么
-        Debug.Log($"BuildManifest_OnBuild, clickedTowerEntityID: {clickedTowerEntityID}, clickedTowerTypeID: {clickedTowerTypeID}");
+        bool has = ctx.towerRepository.TryGet(clickedTowerEntityID, out TowerEntity clickedTowerEntity);
+        if (!has) {
+            Debug.LogError($"BuildManifest_OnBuild, no such tower entityID: {clickedTowerEntityID}");
+            return;
+        }
+
+        Vector3 clickPos = clickedTowerEntity.transform.position;
+
+        // 销毁旧塔, 生成新塔
+        TowerDomain.Unspawn(ctx, clickedTowerEntity);
+        TowerDomain.Spawn(ctx, clickedTowerTypeID, clickPos);
+
+        // 关闭旧的 UI, 旧的UI Element 存有旧的 ClickTowerEntityID
+        UIApp.P_BuildManifest_Close(ctx.uiContext);
+        // UIApp.P_BuildManifest_Open(ctx.uiContext, clickPos);
+        // Debug.Log($"BuildManifest_OnBuild, clickedTowerEntityID: {clickedTowerEntityID}, clickedTowerTypeID: {clickedTowerTypeID}");
     }
 
 }

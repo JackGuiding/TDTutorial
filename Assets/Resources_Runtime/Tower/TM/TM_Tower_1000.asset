@@ -27,3 +27,4 @@ MonoBehaviour:
   - {x: 0, y: 3}
   - {x: 0, y: -5}
   allowBuildTowerTypeIDs: 
+  sprite: {fileID: 21300000, guid: 7f1a4b3c9677e6e4090e423c62bbe5eb, type: 3}
