@@ -10,6 +10,8 @@ public class Panel_BuildManifest : MonoBehaviour {
     [SerializeField] Panel_BuildManifestElement elePrefab;
     List<Panel_BuildManifestElement> elements;
 
+    public Action<int, int> OnBuildHandle;
+
     public void Ctor() {
         elements = new List<Panel_BuildManifestElement>();
     }
@@ -29,7 +31,13 @@ public class Panel_BuildManifest : MonoBehaviour {
     public void AddOption(int clickedTowerEntityID, int clickedTowerTypeID, int price, Sprite icon) {
         Panel_BuildManifestElement ele = GameObject.Instantiate(elePrefab, btnGroup);
         ele.Ctor(clickedTowerEntityID, clickedTowerTypeID, price, icon);
+        // 绑定
+        ele.OnBuildHandle = ElementClick;
         elements.Add(ele);
+    }
+
+    void ElementClick(int clickedTowerEntityID, int clickedTowerTypeID) {
+        OnBuildHandle.Invoke(clickedTowerEntityID, clickedTowerTypeID);
     }
 
     void Show() {

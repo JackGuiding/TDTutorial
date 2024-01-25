@@ -23,15 +23,15 @@ public class ClientMain : MonoBehaviour {
         // 依赖注入 Inject注入
         mainContext.Inject(mainCamera, screenCanvas, worldCanvas);
 
+        // Binding Events
+        BindingEvents(mainContext);
+
         // Init
         AssetsInfra.Load(mainContext.assetsContext);
         TemplateInfra.Load(mainContext.templateContext);
 
         // 进入 Login
-        UIApp.P_Login_Open(mainContext.uiContext, () => {
-            UIApp.P_Login_Close(mainContext.uiContext);
-            GameBusiness.Enter(mainContext.gameContext);
-        });
+        UIApp.P_Login_Open(mainContext.uiContext);
 
         // 简化
         // Transform tf = this.gameObject.GetComponent<Transform>(); // 自带的 this.transform
@@ -44,6 +44,21 @@ public class ClientMain : MonoBehaviour {
         // Debug.Log("ClientMain.Start()");
         // Debug.LogWarning("Warn");
         // Debug.LogError("err");
+
+    }
+
+    void BindingEvents(MainContext ctx) {
+
+        UIEvents uiEvents = ctx.uiContext.events;
+
+        uiEvents.Login_OnClickStartHandle = () => {
+            UIApp.P_Login_Close(mainContext.uiContext);
+            GameBusiness.Enter(mainContext.gameContext);
+        };
+
+        uiEvents.BuildManifest_OnBuildHandle = (int clickedTowerEntityID, int clickedTowerTypeID) => {
+            GameBusiness.BuildManifest_OnBuild(mainContext.gameContext, clickedTowerEntityID, clickedTowerTypeID);
+        };
 
     }
 

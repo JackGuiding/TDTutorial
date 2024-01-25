@@ -6,12 +6,16 @@ public class UIContext {
     public Panel_HeartInfo panel_heartInfo;
     public Panel_BuildManifest panel_buildManifest;
 
+    public UIEvents events;
+
     public Canvas screenCanvas; // Screen Canvas
     public Canvas worldCanvas; // World Canvas
 
     public AssetsContext assetsContext;
 
-    public UIContext() { }
+    public UIContext() {
+        events = new UIEvents();
+    }
 
     public void Inject(Canvas screenCanvas, Canvas worldCanvas, AssetsContext assetsContext) {
         this.screenCanvas = screenCanvas;

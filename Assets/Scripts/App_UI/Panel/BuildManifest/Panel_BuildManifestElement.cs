@@ -1,4 +1,5 @@
 // 建造按钮
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class Panel_BuildManifestElement : MonoBehaviour {
     // 显示图标
     [SerializeField] Image icon;
 
+    public Action<int, int> OnBuildHandle;
+
     public void Ctor(int clickedTowerEntityID, int clickedTowerTypeID, int price, Sprite icon) {
 
         this.clickedTowerEntityID = clickedTowerEntityID;
@@ -21,6 +24,10 @@ public class Panel_BuildManifestElement : MonoBehaviour {
 
         this.priceTxt.text = price.ToString();
         this.icon.sprite = icon;
+
+        button.onClick.AddListener(() => {
+            OnBuildHandle.Invoke(clickedTowerEntityID, clickedTowerTypeID);
+        });
 
     }
 

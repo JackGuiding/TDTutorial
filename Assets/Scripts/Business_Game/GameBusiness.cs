@@ -78,4 +78,11 @@ public static class GameBusiness {
         // 1. 清理所有 Entity
     }
 
+    // 事件反馈
+    public static void BuildManifest_OnBuild(GameContext ctx, int clickedTowerEntityID, int clickedTowerTypeID) {
+        // clickedTowerEntityID 表示: 基于谁, 造在哪里
+        // clickedTowerTypeID 表示造什么
+        Debug.Log($"BuildManifest_OnBuild, clickedTowerEntityID: {clickedTowerEntityID}, clickedTowerTypeID: {clickedTowerTypeID}");
+    }
+
 }

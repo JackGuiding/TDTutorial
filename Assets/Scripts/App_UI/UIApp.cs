@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public static class UIApp {
 
     // P Login
-    public static void P_Login_Open(UIContext ctx, Action onClickStartHandle) {
+    public static void P_Login_Open(UIContext ctx) {
         Panel_Login panel = ctx.panel_login;
         if (panel == null) {
             ctx.assetsContext.Panel_TryGetPrefab("Panel_Login", out GameObject prefab);
@@ -13,7 +13,9 @@ public static class UIApp {
             panel.Ctor();
             ctx.panel_login = panel;
 
-            panel.OnStartClickHandle = onClickStartHandle;
+            panel.OnStartClickHandle = () => {
+                ctx.events.Login_OnClickStart();
+            };
         }
         panel.Show();
         EventSystem.current.SetSelectedGameObject(panel.startBtn.gameObject);
@@ -61,6 +63,10 @@ public static class UIApp {
             panel = GameObject.Instantiate(prefab, ctx.worldCanvas.transform).GetComponent<Panel_BuildManifest>();
             panel.Ctor();
             ctx.panel_buildManifest = panel;
+
+            panel.OnBuildHandle = (int clickedTowerEntityID, int clickedTowerTypeID) => {
+                ctx.events.BuildManifest_OnBuild(clickedTowerEntityID, clickedTowerTypeID);
+            };
         }
         panel.Init(worldPos);
     }
