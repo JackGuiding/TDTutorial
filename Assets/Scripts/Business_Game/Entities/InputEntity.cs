@@ -7,6 +7,8 @@ public class InputEntity {
     public Vector2 mouseWorldPos;
     public bool isMouseLeftDown;
 
+    public bool isMouseRightDown;
+
     public InputEntity() { }
 
     public void Reset() {
@@ -14,6 +16,7 @@ public class InputEntity {
         mouseScreenPos = Vector2.zero;
         mouseWorldPos = Vector2.zero;
         isMouseLeftDown = false;
+        isMouseRightDown = false;
     }
 
 }

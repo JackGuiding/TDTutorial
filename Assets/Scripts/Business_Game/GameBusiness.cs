@@ -41,6 +41,12 @@ public static class GameBusiness {
             input.isMouseLeftDown = true;
         }
 
+        if (Input.GetMouseButtonDown(1)) {
+            input.isMouseRightDown = true;
+        } else {
+            input.isMouseRightDown = false;
+        }
+
         // 处理用户输入
         UserInterfaceDomain.PreTick(ctx, dt);
 
@@ -52,6 +58,23 @@ public static class GameBusiness {
 
     // 可能一帧有多次
     public static void FixedTick(GameContext ctx, float fixdt) {
+
+        InputEntity input = ctx.inputEntity;
+
+        // for Player
+        PlayerEntity player = ctx.playerEntity;
+        SkillSubEntity skill = player.skill;
+        if (skill.cd > 0) {
+            skill.cd -= fixdt;
+        }
+        if (input.isMouseRightDown) {
+            // 施放技能
+            if (skill.cd <= 0) {
+                // 技能冷却好了
+                skill.cd += skill.cdMax;
+                Debug.Log("放了技能: " + skill.typeName);
+            }
+        }
 
         // for Tower
         int towerLen = ctx.towerRepository.TakeAll(out TowerEntity[] towers);
